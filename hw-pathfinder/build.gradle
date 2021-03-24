@@ -1,0 +1,32 @@
+task runPathfinder(type: JavaExec) {
+    group = "homework"
+    main = "pathfinder/textInterface/Pathfinder"
+    standardInput = System.in
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task specTests(type: Test) {
+    group "verification"
+    filter {
+        includeTestsMatching "pathfinder.specTest.*"
+    }
+}
+
+task implTests(type: Test) {
+    group "verification"
+    filter {
+        includeTestsMatching "pathfinder.implTest.*"
+    }
+}
+
+dependencies {
+    implementation 'com.opencsv:opencsv:4.3.2'
+    implementation project(':hw-graph')
+    implementation project(':hw-marvel')
+}
+
+tasks.withType(Test) {
+    // This causes any testing tasks to fail tests that call System.exit(),
+    // instead of crashing the testing system as would happen by default.
+    systemProperty 'java.security.manager', 'pathfinder.testUtils.ExitHandler'
+}

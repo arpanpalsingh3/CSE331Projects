@@ -1,0 +1,18 @@
+# Find a path with Dijkstra's algorithm
+
+created graph simpleGraph
+
+added node A to simpleGraph
+added node B to simpleGraph
+added node C to simpleGraph
+added node D to simpleGraph
+
+added edge 10.000 from A to B in simpleGraph
+added edge 1.000 from A to C in simpleGraph
+added edge 1.000 from C to D in simpleGraph
+added edge 9.000 from D to B in simpleGraph
+
+path from A to A:
+total cost: 0.000
+
+

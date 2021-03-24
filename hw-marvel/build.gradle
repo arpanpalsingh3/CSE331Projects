@@ -1,0 +1,31 @@
+task runMarvel(type: JavaExec) {
+    group = "homework"
+    main = "marvel/MarvelPaths"
+    standardInput = System.in
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task specTests(type: Test) {
+    group "verification"
+    filter {
+        includeTestsMatching "marvel.specTest.*"
+    }
+}
+
+task implTests(type: Test) {
+    group "verification"
+    filter {
+        includeTestsMatching "marvel.implTest.*"
+    }
+}
+
+dependencies {
+    implementation 'com.opencsv:opencsv:4.3.2'
+    implementation project(':hw-graph')
+}
+
+tasks.withType(Test) {
+    // This causes any testing tasks to fail tests that call System.exit(),
+    // instead of crashing the testing system as would happen by default.
+    systemProperty 'java.security.manager', 'marvel.testUtils.ExitHandler'
+}

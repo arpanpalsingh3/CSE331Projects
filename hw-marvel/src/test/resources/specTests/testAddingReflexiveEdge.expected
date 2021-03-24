@@ -1,0 +1,21 @@
+# Test MarvelPaths doesn't allow adding reflexive edge
+
+# Build the graph
+loaded graph staffSuperheroes
+
+# List nodes and edges to see if the graph is built correctly
+staffSuperheroes contains: Ernst-the-Bicycling-Wizard Grossman-the-Youngest-of-them-all Notkin-of-the-Superhuman-Beard Perkins-the-Magical-Singing-Instructor
+the children of Ernst-the-Bicycling-Wizard in staffSuperheroes are: Grossman-the-Youngest-of-them-all(CSE331) Notkin-of-the-Superhuman-Beard(CSE403) Perkins-the-Magical-Singing-Instructor(CSE331)
+the children of Notkin-of-the-Superhuman-Beard in staffSuperheroes are: Ernst-the-Bicycling-Wizard(CSE403)
+the children of Perkins-the-Magical-Singing-Instructor in staffSuperheroes are: Ernst-the-Bicycling-Wizard(CSE331) Grossman-the-Youngest-of-them-all(CSE331)
+the children of Grossman-the-Youngest-of-them-all in staffSuperheroes are: Ernst-the-Bicycling-Wizard(CSE331) Perkins-the-Magical-Singing-Instructor(CSE331)
+
+# Find the shortest path Perkins-the-Magical-Singing-Instructor to Notkin-of-the-Superhuman-Beard
+path from Perkins-the-Magical-Singing-Instructor to Notkin-of-the-Superhuman-Beard:
+Perkins-the-Magical-Singing-Instructor to Ernst-the-Bicycling-Wizard via CSE331
+Ernst-the-Bicycling-Wizard to Notkin-of-the-Superhuman-Beard via CSE403
+
+# Find the shortest path Notkin-of-the-Superhuman-Beard to Perkins-the-Magical-Singing-Instructor
+path from Notkin-of-the-Superhuman-Beard to Perkins-the-Magical-Singing-Instructor:
+Notkin-of-the-Superhuman-Beard to Ernst-the-Bicycling-Wizard via CSE403
+Ernst-the-Bicycling-Wizard to Perkins-the-Magical-Singing-Instructor via CSE331

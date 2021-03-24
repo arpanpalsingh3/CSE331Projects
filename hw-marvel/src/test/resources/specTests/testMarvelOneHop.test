@@ -1,0 +1,8 @@
+# Test MarvelPaths finding path one hop away
+
+# Create the marvel graph from marvel.tsv
+LoadGraph marvel marvel.tsv
+
+# Find the shortest path
+FindPath marvel BEAST/HENRY_&HANK&_P WISDOM,_PETER
+

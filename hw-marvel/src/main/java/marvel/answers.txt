@@ -1,0 +1,39 @@
+CSE 331 Homework.  Answers to written questions.
+Edit this file to supply your answers.
+
+Name:  Arpanpal Singh
+
+Briefly describe any changes made to your Graph ADT from previous assignments,
+and why those changes were made below. If you made no changes, state that
+explicitly. (See the marvel assignment spec for details.)
+
+
+
+* Made edge class have capital first letter, and other minor visual changes
+* Separated Edge Test from Graph Test and made it into its own test suit
+* Edge is no longer implements comparable, so no compare method anymore
+* Got rid of graph name field along with all methods and tests related
+  as suggested by TA feedback
+
+
+
+SIDE NOTES FOR HW6
+* Modified staffSuperheros.tsv slightly by removing Notkin(331)
+  so that I could test 2 hop BFSearch
+
+
+
+I know I have a lot of comments in my code, but that is just there to help me
+understand my code better and not get confused, as some of the buildGraph
+method was getting me confused. I wanted to see if this is okay
+to have, or should I completely remove them on following assignments and
+make them shorter?
+
+Another small design change that I made last minute, was having all my
+build graph code inside the buildGraph method. Before that, I had my buildGraph
+method use the parseData method, and that parseData method would return a complete graph.
+I was wondering if that is a poor design choice, or does it not matter? I felt that
+having all the code all inside the parseData was cleaner, but the build graph method didn't
+actually do anything other than call parseData, take whatever that returned, and return that
+graph. No actual graph building inside the buildGraph.
+Just wanted an opinion on which design choice is better, or if there's no difference at all.

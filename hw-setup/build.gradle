@@ -1,0 +1,17 @@
+task runHelloWorld(type: JavaExec) {
+  group = "homework"
+  main = "setup/HelloWorld"
+  classpath = sourceSets.main.runtimeClasspath
+}
+
+task runHolaWorld(type: JavaExec) {
+  group = "homework"
+  main = "setup/HolaWorld"
+  classpath = sourceSets.main.runtimeClasspath
+}
+
+task runRandomHello(type: JavaExec) {
+  group = "homework"
+  main = "setup/RandomHello"
+  classpath = sourceSets.main.runtimeClasspath
+}

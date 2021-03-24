@@ -1,0 +1,4 @@
+# Test loadGraph method
+
+# Create graph staffSuperheroes
+LoadGraph staffSuperheroes staffSuperheroes.tsv

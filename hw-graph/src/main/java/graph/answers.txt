@@ -1,0 +1,78 @@
+CSE 331 Homework.  Answers to written questions.
+Edit this file to supply your answers.
+
+Name: Arpanpal Singh
+
+Part 1. (Written exercises)
+
+(a) For IntQueue1
+    Rep Invariant: entries != null and  entries has no nulls
+    Abstraction Function:
+    AF(this) = Queue<Integer> such that
+               queue = entries = [] if no elements in entries
+               queue = entries = [a1, a2, ..., a_k] o.w.
+               where k is # of elements in entries
+
+
+    For IntQueue2
+    Rep Invariant: entries != null, size >= 0,
+                   front >= 0 and front <= |entries| - 1 (a.k.a entries.length - 1)
+    Abstraction Function:
+    AF(this) = Queue<Integer> such that
+        entries = [a1, a2, ..., a_k], front = i, size = n
+        queue = [] if size == 0
+        queue = [a_(i+1), ..., a_(i+n)] if front+size <= |entries|
+        queue = [a_(i+1), ..., a_k, a1, ..., a_(k-i)] if front+size <= |entries|
+
+(b)
+    queue_a = [1, 2]
+    queue_b = [2, 3, 4]
+    queue_c = [1, 2, 3]
+    queue_d = [1, 2]
+    queue_e = [1, 2, 3, 4]
+    queue_f = [1, 2, 3]
+    queue_g = [1, 2]
+    queue_h = [2, 3, 4]
+    a, d and g are equivalent.
+    b and h are equivalent.
+    c and f are equivalent.
+
+
+(c)
+1) This does not contain rep exposure because it returns primitive data types
+2) This could be rep exposure, because it returns String[], which the client can change.
+3) If Date is immutable, then it doesn't have rep exposure. If it's mutable and the returned
+is a copy of original Date, then no rep exposure. Otherwise, there is exposure.
+4) No rep exposure, returned String is immutable.
+5) If the original Iterator has a remove method, then the client can use it to remove elements,
+so rep exposure.
+6) If returned Deck is not a copy, then rep exposure, since you can change lists.
+
+
+Part 2.  (Graph interface/operations)
+
+addNode and addEdge are both needed in order to starting building the graph. containsNode
+is needed so that the graph won't have duplicate nodes and also allows
+the client to look into the graph to see what is in there. getNodes,
+childrenOf, isEmpty and size are included since it allows client to get
+some information about the graph. Finally, removeEdge is included because I think the client
+having the option to get rid of edge they no longer want is a good idea.
+
+
+
+Part 3.  (Testing strategy)
+
+I believe I used clear-box testing, as I tried to make sure that every line of code would be
+executed. I went for coverage for sure, because I feel the code size is small enough, to where
+getting near 100% coverage should not be difficult. At some parts of the testing process, I
+used "0,1,2" case analysis mentioned in hints section to come up with a lot of different combinations,
+for example wih the size tests, where I tested empty graph, 1 node graph, 2 node graph, and 2 node
+graph with duplication. I did not do this for ALL the tests however.
+
+I'm not sure if it was a bad thing, but I feel like I was in the middle for my testing. I didn't
+pick a SINGLE strategy for my testing. I leaned towards trying to do the "0,1,2" strategy because I
+felt it had the most coverage.
+
+
+
+

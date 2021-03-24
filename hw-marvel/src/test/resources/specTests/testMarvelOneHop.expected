@@ -1,0 +1,8 @@
+# Test MarvelPaths finding path one hop away
+
+# Create the marvel graph from marvel.tsv
+loaded graph marvel
+
+# Find the shortest path
+path from BEAST/HENRY &HANK& P to WISDOM, PETER:
+BEAST/HENRY &HANK& P to WISDOM, PETER via X:PRIME

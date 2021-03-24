@@ -1,0 +1,5 @@
+task runCalculator (type: JavaExec) {
+   group "homework"
+   main = "poly/CalculatorFrame"
+   classpath = sourceSets.main.runtimeClasspath
+}

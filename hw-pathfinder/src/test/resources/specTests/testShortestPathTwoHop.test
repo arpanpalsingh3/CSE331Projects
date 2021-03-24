@@ -1,0 +1,27 @@
+# Find a path with Dijkstra's algorithm
+
+CreateGraph simpleGraph
+
+AddNode simpleGraph A
+AddNode simpleGraph B
+AddNode simpleGraph C
+AddNode simpleGraph D
+AddNode simpleGraph E
+AddNode simpleGraph F
+
+AddEdge simpleGraph A B 1.23
+AddEdge simpleGraph A D 1.99
+AddEdge simpleGraph B A 1.23
+AddEdge simpleGraph B D .77
+AddEdge simpleGraph B E .77
+AddEdge simpleGraph B F 2.77
+AddEdge simpleGraph D A 1.99
+AddEdge simpleGraph D B .77
+AddEdge simpleGraph D E 2.31
+AddEdge simpleGraph E B .77
+AddEdge simpleGraph E D 2.31
+AddEdge simpleGraph E F 1.99
+AddEdge simpleGraph F B 2.77
+AddEdge simpleGraph F E 1.99
+
+FindPath simpleGraph D E

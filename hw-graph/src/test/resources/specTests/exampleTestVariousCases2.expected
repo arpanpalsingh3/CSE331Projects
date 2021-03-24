@@ -1,0 +1,29 @@
+# Sample testing file
+# Tests graph creation/viewing with a
+# simple graph ('A') with three nodes.  Also tests
+# that the simultaneous creation of another graph
+# ('B') does not result in incorrect behavior.
+
+# We provide this test purely for you to verify your
+# implementation of a variety of test script commands.
+# This is NOT an example of a properly low-granularity test
+# case, nor is it intended to be! Your tests, unlike this
+# one, should only test one condition per file. The name and
+# comments of your files should describe the condition being tested.
+
+created graph A
+added node n1 to A
+added node n2 to A
+created graph B
+B contains:
+added node n3 to A
+added edge e31 from n3 to n1 in A
+added node n1 to B
+added node n2 to B
+added edge e21 from n2 to n1 in B
+added edge e13 from n1 to n3 in A
+added edge e12 from n1 to n2 in A
+A contains: n1 n2 n3
+the children of n1 in A are: n2(e12) n3(e13)
+added edge e33 from n3 to n3 in A
+the children of n3 in A are: n1(e31) n3(e33)

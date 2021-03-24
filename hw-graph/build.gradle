@@ -1,0 +1,21 @@
+task validatePart1 {
+  group "homework"
+  dependsOn clean
+  dependsOn compileJava
+  dependsOn compileTestJava
+  dependsOn javadoc
+}
+
+task specTests(type: Test) {
+  group "verification"
+  filter {
+    includeTestsMatching "graph.specTest.*"
+  }
+}
+
+task implTests(type: Test) {
+  group "verification"
+  filter {
+    includeTestsMatching "graph.implTest.*"
+  }
+}

@@ -1,0 +1,17 @@
+# Test MarvelPaths doesn't allow adding reflexive edge
+
+# Build the graph
+LoadGraph staffSuperheroes staffSuperheroes.tsv
+
+# List nodes and edges to see if the graph is built correctly
+ListNodes staffSuperheroes
+ListChildren staffSuperheroes Ernst-the-Bicycling-Wizard
+ListChildren staffSuperheroes Notkin-of-the-Superhuman-Beard
+ListChildren staffSuperheroes Perkins-the-Magical-Singing-Instructor
+ListChildren staffSuperheroes Grossman-the-Youngest-of-them-all
+
+# Find the shortest path Perkins-the-Magical-Singing-Instructor to Notkin-of-the-Superhuman-Beard
+FindPath staffSuperheroes Perkins-the-Magical-Singing-Instructor Notkin-of-the-Superhuman-Beard
+
+# Find the shortest path Notkin-of-the-Superhuman-Beard to Perkins-the-Magical-Singing-Instructor
+FindPath staffSuperheroes Notkin-of-the-Superhuman-Beard Perkins-the-Magical-Singing-Instructor

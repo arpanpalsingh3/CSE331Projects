@@ -1,0 +1,81 @@
+stages:
+  - build
+  - validation
+
+demo-build:
+  stage: build
+  script: python3 -c 'print("\n\n\u001b[35mCongrats, you have pushed the section-demo tag!\u001b[39m\n\n")'
+  only: ["section-demo"]
+  except: ["branches"]
+
+setup-build:
+  stage: build
+  script: /cse/courses/cse331/20wi/gitlab-ci/scripts/Runner.py hw-setup build
+  only: ["hw3-final"]
+  except: ["branches"]
+
+setup-validation:
+  stage: validation
+  script: /cse/courses/cse331/20wi/gitlab-ci/scripts/Runner.py hw-setup validation
+  only: ["hw3-final"]
+  except: ["branches"]
+
+poly-build:
+  stage: build
+  script: /cse/courses/cse331/20wi/gitlab-ci/scripts/Runner.py hw-poly build
+  only: ["hw4-final"]
+  except: ["branches"]
+
+poly-validation:
+  stage: validation
+  script: /cse/courses/cse331/20wi/gitlab-ci/scripts/Runner.py hw-poly validation
+  only: ["hw4-final"]
+  except: ["branches"]
+
+graph-part1-build:
+  stage: build
+  script: /cse/courses/cse331/20wi/gitlab-ci/scripts/Runner.py hw-graph-part1 build
+  only: ["hw5-part1-final"]
+  except: ["branches"]
+
+graph-part1-validation:
+  stage: validation
+  script: /cse/courses/cse331/20wi/gitlab-ci/scripts/Runner.py hw-graph-part1 validation
+  only: ["hw5-part1-final"]
+  except: ["branches"]
+
+graph-part2-build:
+  stage: build
+  script: /cse/courses/cse331/20wi/gitlab-ci/scripts/Runner.py hw-graph-part2 build
+  only: ["hw5-part2-final"]
+  except: ["branches"]
+
+graph-part2-validation:
+  stage: validation
+  script: /cse/courses/cse331/20wi/gitlab-ci/scripts/Runner.py hw-graph-part2 validation
+  only: ["hw5-part2-final"]
+  except: ["branches"]
+
+marvel-build:
+  stage: build
+  script: /cse/courses/cse331/20wi/gitlab-ci/scripts/Runner.py hw-marvel build
+  only: ["hw6-final"]
+  except: ["branches"]
+
+marvel-validation:
+  stage: validation
+  script: /cse/courses/cse331/20wi/gitlab-ci/scripts/Runner.py hw-marvel validation
+  only: ["hw6-final"]
+  except: ["branches"]
+
+pathfinder-build:
+  stage: build
+  script: /cse/courses/cse331/20wi/gitlab-ci/scripts/Runner.py hw-pathfinder build
+  only: ["hw7-final"]
+  except: ["branches"]
+
+pathfinder-validation:
+  stage: validation
+  script: /cse/courses/cse331/20wi/gitlab-ci/scripts/Runner.py hw-pathfinder validation
+  only: ["hw7-final"]
+  except: ["branches"]

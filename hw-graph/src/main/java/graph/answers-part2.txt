@@ -1,0 +1,31 @@
+Arpanpal Singh
+Hw5-part2 answers text
+
+Part 1)
+    a) Collection of edges has a runtime complexity of O(1) when adding a new edge which is an advantage
+       The Adjacency list has a runtime complexity of O(1) when adding a vertex which is an advantage
+       The Adjacency Matrix has a runtime complexity of O(1) when adding or removing edge, or checking for edge
+    b)
+       For my implementation, I used an Adjacency List for my implementation, except I had sets instead of
+       lists to store my edges!
+
+Part 4)
+I added about 15-20 more tests to my suit, but most of them are actually just more detailed versions
+of my previous tests that I had. I wanted to follow more along the lines of the "0,1,2" testing strategy, so I
+tried to make my tests as through as possible. I also added a few more tests related to the new edge class I
+declared. I kept the tests fairly minimum for that one.
+
+The biggest change to my implementation is my decision to add the "edge" class. This made it so that I stored
+outgoing edges for each parent node in an edge object. The edge object contains the destination along with the name of
+the edge which is called the label. I choose to do it this way because I couldn't figure out a way to do all
+my methods that I wanted. Originally, I was planning on doing a collection of nodes. The idea seemed really good
+the previous week, but I quickly found out during the start of this week that it would not be possible.
+
+At one point during the week, I had changed pretty much ALL the specifications of my graph to not include
+@throws because I couldn't figure out how to make the junit sweet detect those exceptions properly. Thankfully,
+I was able to learn how to do it now, and most of those @throws are back in there, and my junit test catches them.
+
+Another change to my testing suit was the addition of a ton more variables to test. I feel like my test wasn't very
+thought out from part 1, so I was bound to add a ton of changes.
+
+Other than that, most of my specifications and tests are still there from week one.

@@ -1,0 +1,135 @@
+CSE 331 Homework - Poly.  Answers to written questions.
+Edit this file to supply your answers.
+
+Name:  Arpan Singh
+
+**************************
+*****     Part 0     *****
+**************************
+
+(1) Pseudocode for r = p*q, where p and q are rat polynomials:
+    Set empty polynomial r, empty ratTerms
+    {inv: r = (p*q_0)+(p*q_1)+...+(p+q_j-i), where q_j is the jth term in q}
+    foreach term, t_q, in q
+        foreach term in t_p, in p
+            the coefficient on s = multiplication of t_q and t_p coefficients, and the degree = the sum of the degrees of t_q and t_p
+            r = r + s
+    return r
+
+    // this is nested loop, which runs through both q and p, and takes all the ratTerms of q and multiplies each of them with the entire ratPolynomial p and adds the sum of it all up.
+    You end up with r, which is the product of p an q.
+
+(2) Pseudocode for q = s/p
+    Set empty RatPoly q of RatTerms
+    Set RatPoly r = copy of s
+    Empty RatTerm t
+
+    {inv: q = (r_0/p_0) + (r_1/p_0)+...+(r_i+1/p_0), where i goes up to to r_0.getExpt-p_0.getExpt
+    while(r.size != 0 && r.degree >= p.degree)
+        t = r_0 divided by p_0 (divide their first terms, since they are sorted so they should be highest)
+        q = q.add(t) (add the result of the division into q (quotient))
+        r = r.sub(t*p) (subtract from r, the multiplication of t and p)
+    return r
+
+(3) Illustrate (x^3+x-1)/(x+1)=x^2-x+2
+
+    r = x^3+x-1
+    p = x+1
+    q = {} (empty)
+    t = {] (empty)
+    while ( r.size != 0 && r.degree >= p.degree)
+        iteration 1:r.size != 0 YES && degree of r >= p YES SO -> r = (x^3+x-1), p = (x+1), q = {}, t = {}
+            t = r_0 (x^3) / p_0 (x) so t = x^2
+            q = q.add(t) so q = x^2
+            r = r.sub(t*p), which is ((x^2)*(x+1)) = x^3+x^2 and r = (x^3+x-1)-(x^3+x^2) so r = (-x^2+x-1)
+        iteration 2:r.size != 0 YES && degree of r >= p YES so -> r = (-x^2+x-1), p = (x+1), q = (x^2), t = x^2
+            t = r_0 (-x^2) / p_0 (x) so t = -x
+            q = q.add(t) which is x^2 + (-x) so q = (x^2-x)
+            r = r.sub(t*p), so (-x^2+x-1) - (-x^2-x) so r = 2x-1
+        iteration 3:r.size != 0 YES && degree of r >= p YES so -> r = (2x-1), p = (x+1), q = (x^2-x), t = -x
+            t = r_0 (2x) / p_0 (x) so t = 2
+            q = q.add(t) , so q = (x^2-x+2)
+            r = r.sub(t*p), so (2x-1) - (2x+2) so r = -3
+        r.size != 0 YES && degree of r >= p NO, so loop breaks
+
+        **we return q, which is (x^2-x+2) which is the desired result!**
+
+
+**************************
+*****     Part 1     *****
+**************************
+
+(1) If the rep invariant was changed, then the method RatNum would no longer need to find the GCD when the method is called and no longer needs to reduce them.
+Our checkrep() no longer needs to check if the number is in reduced form every time it is called.
+For equals method, we would have to use GCD method or else equals will say 2/2 != 4/4 since it compares numerators and denominators
+For the toString method, you would have to, inside the method, use the GCD method like previously done in the RatNum method, and return the result of the denom and numer divided by the GCD
+
+
+(2) The RatNum class is SUPPOSED to be immutable, meaning once the class has been called and the number has been made,
+it cannot be changed. If we just return "this", then it enables the client to bring changes to the rat number,
+which is not consistent with the requirements of our class.
+
+
+(3) The reason why you don't need to call checkrep at the start of RatNum is because the RatNum hasn't been constructed yet.
+Before the construction of RatNum, the rep invariant for RatNum doesn't come into play, so you cannot break it,
+which means you dont have to check it either.
+
+
+**************************
+*****     Part 2     *****
+**************************
+
+(1) I only included my checkRep() method at the end of my constructor for RatTerm.
+This was deliberate, because I know that my RatTerm object is immutable, and my other methods make sure that it stays so.
+If it is immutable, the ONLY time I really need to checkRep() is when I am creating the RatTerm to make sure it fits with my rep invariant.
+
+
+(2) If we changed the rep invariant to allow RatTerms with 0 coefficients to have non zero exponents, then it allows
+for polynomials to exist with 0 attached to x's with exponent values. So, for example, when you add 2 polynomials, the
+return value would be something like x^3 + 0x^2. Mathematically, it's correct, but with our current to string method, it would
+print out these weird polynomials.
+
+For starters the checkRep() would need to be changed to allow 0 coefficients
+The check rep should no longer prohibit 0 coefficients to have 0 exponents.
+The negation method would have to change so that it doesn't return, for example 0x^6
+The add method needs to be changed so that it doesn't let 0x^2+x^3 return 0x^2+x^3 when it should just return x^3
+Both multiplication and division would also give out mathematically correct answers, but they would be weird with 0's all over
+The derivative and antiDerivative methods would also print out weird polynomials like 0x^0 or 0/3x^3
+
+The way to counteract all of these would be to just not allow the 0 coefficient, but since we are allowing it,
+our toString function just needs to catch whenever the coeff is == 0 and expt != 0 (essentially do what the old checkrep() did,
+but ONLY in toString.
+
+Overall, I think its MUCH better to not allow 0 coeff with non zero expt because it gets rid of the chance of weird polynomials being printed.
+The advantage would be I suppose that it allows the client to technically put in a VALID input, is putting in 0x^3 isn't wrong,
+its just another way of saying 0, even if it makes some of our code to meaningless computations such as multiplying, dividing, etc by 0.
+
+
+(3) Forcing exponents of NaN to be 0, means that the constructor must change and you must add an if statement,
+which sets the exponent to 0 if coeff input is NaN.
+
+
+(4) I prefer neither. I prefer to not worry about he exponent and instead focus on the coeff when it comes to NaNs as it makes my code easier.
+My exponent should never determine anything when I check for NaN. A Nan with expt 0 and a NaN with expt 5 are both NaNs, however, a term with exponent 0 does NOT mean ita NaN.
+For the sake of my code, checking for the isNaN() is much simpler as well, since I can just just the coeff.
+
+
+**************************
+*****     Part 3     *****
+**************************
+
+(1) The only place I did checkRep() is at the end of constructors and the Multiplication and Division methods.
+The reason being that checkRep() only needs to be called when you are creating a RatPoly or changing one.
+Since RatPoly is immutable, changing it shouldn't be possible,
+and my methods all follow that, EXCEPT for the multiplication and division methods, which create a new RatPoly which gets all the values of the 2 variable RatPoly's.
+Since I am creating a new ratPoly, it is best to checkRep() and see if my rep invariant still holds.
+
+
+(2) Tracking coefficients and exponents of each RatTerm separately is different Arrays would probably be very annoying and problematic.
+The implementation is more confusing because you have to somehow figure out a way to always have the coefficients always match with the right exponents,
+even though they are being stored in 2 different arrays.
+The advantage of doing it this way would be that you would not need the RatTerm ADT, since you're just storing RatNums and ints in arrays, which is what RatTerm does currently,
+except in individual objects. From a coding standpoint, Array's are much easier to use for most people since its much more common, so that could also be an advantage.
+
+
+

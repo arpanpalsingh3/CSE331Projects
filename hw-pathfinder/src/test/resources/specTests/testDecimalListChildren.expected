@@ -1,0 +1,32 @@
+# Find a path with Dijkstra's algorithm
+
+created graph simpleGraph
+
+added node A to simpleGraph
+added node B to simpleGraph
+added node C to simpleGraph
+added node D to simpleGraph
+added node E to simpleGraph
+added node F to simpleGraph
+
+added edge 1.230 from A to B in simpleGraph
+added edge 1.990 from A to D in simpleGraph
+added edge 1.230 from B to A in simpleGraph
+added edge 0.770 from B to D in simpleGraph
+added edge 0.770 from B to E in simpleGraph
+added edge 2.770 from B to F in simpleGraph
+added edge 1.990 from D to A in simpleGraph
+added edge 0.770 from D to B in simpleGraph
+added edge 2.310 from D to E in simpleGraph
+added edge 0.770 from E to B in simpleGraph
+added edge 2.310 from E to D in simpleGraph
+added edge 1.990 from E to F in simpleGraph
+added edge 2.770 from F to B in simpleGraph
+added edge 1.990 from F to E in simpleGraph
+
+the children of A in simpleGraph are: B(1.23) D(1.99)
+the children of B in simpleGraph are: D(0.77) E(0.77) A(1.23) F(2.77)
+the children of C in simpleGraph are:
+the children of D in simpleGraph are: B(0.77) A(1.99) E(2.31)
+the children of E in simpleGraph are: B(0.77) F(1.99) D(2.31)
+the children of F in simpleGraph are: E(1.99) B(2.77)

@@ -1,0 +1,12 @@
+# Test the parser on staffSuperheroes.tsv
+
+# Build the Graph
+LoadGraph staffSuperheroes staffSuperheroes.tsv
+
+# List nodes and edges to see if the graph
+# is fully build
+ListNodes staffSuperheroes
+ListChildren staffSuperheroes Ernst-the-Bicycling-Wizard
+ListChildren staffSuperheroes Notkin-of-the-Superhuman-Beard
+ListChildren staffSuperheroes Perkins-the-Magical-Singing-Instructor
+ListChildren staffSuperheroes Grossman-the-Youngest-of-them-all

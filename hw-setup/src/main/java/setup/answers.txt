@@ -1,0 +1,16 @@
+CSE 331 Homework - "Setup"
+Edit this file to supply your answers.
+
+Name:  Arpanpal Singh
+
+Problem 6.
+
+(a) It failed because the if statement encompassed n = 0 because the statement was if n <= 0. The quick fix, was changing it to n < 0. This made sure that the program didn't label 0 as an illegal argument.
+
+
+(b) The reason why test base case was failing, was because the else statement was encompassing n = 2 by stating to output 1 when n <= 2. The fix was changing the statement to n < 2, so that 2 is not considered a part of the base cases
+
+
+(c) The problem with the inductive case was that to calculate the current index, it would take the previous index value and subtract from it the one before that one, which was shown with  (n-1) - (n-2). This is incorrect with the Fibonacci sequence instead adds the previous 2 indexes. So, the fix was to change the negative to a plus, so: (n-1)+(n-2). That fixed all the problems.
+
+

@@ -1,0 +1,23 @@
+CSE 331 Homework.  Answers to written questions.
+Edit this file to supply your answers.
+
+Name:  Arpanpal Singh
+
+Describe any changes you made to your marvel or graph code, other
+than making changes to support generics:
+
+* Added a few tests to the Edge test suit to make sure generics work
+* Fixed my BFS comparators, so that they now return alphabetically
+in my script tests (BIGGEST CHANGE)
+* Also fixed all the small warnings I was receiving in older classes
+
+
+
+I would like to point out that I am fully aware of not having any Javadocs for
+all the override methods inside the CampusMap class. I purposely did not place
+any there because all their specifications are already present in the ModelAPI
+class. If I need to have them there, I will make sure to do that after I get
+the feedback back from this homework.
+
+
+
